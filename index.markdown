@@ -6,6 +6,8 @@ layout: default
 title: Multiple Parson's Problems on One Page
 ---
 # Parsons Practice
+## Recursive fibonacci sequence calculation with memoization)
+Re-arrange the blocks below so they memoize the calculation of the n:th Fibonacci number!
 
 <div id="memoFibonacci-sortableTrash" class="sortable-code"></div> 
 <div id="memoFibonacci-sortable" class="sortable-code"></div> 
