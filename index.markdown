@@ -6,7 +6,50 @@ layout: default
 title: Multiple Parson's Problems on One Page
 ---
 # Parsons Practice
-## Recursive fibonacci sequence calculation with memoization)
+
+## Recursive fibonacci
+Rearrange the code fragments to a function calculating the n:th Fibonacci number!
+
+<div id="fibonacci-sortableTrash" class="sortable-code"></div> 
+<div id="fibonacci-sortable" class="sortable-code"></div> 
+<div style="clear:both;"></div> 
+<p> 
+    <input id="fibonacci-feedbackLink" value="Get Feedback" type="button" /> 
+    <input id="fibonacci-newInstanceLink" value="Reset Problem" type="button" /> 
+</p> 
+<script type="text/javascript"> 
+(function(){
+  var initial = "def fib(n):\n" +
+    "	if n == 1 or n == 2:\n" +
+    "    	return 1\n" +
+    "    else:\n" +
+    "    	return fib (n-1)+ fib(n-2)\n" +
+    "return 2 #distractor";
+  var parsonsPuzzle = new ParsonsWidget({
+    "sortableId": "fibonacci-sortable",
+    "max_wrong_lines": 10,
+    "grader": ParsonsWidget._graders.LineBasedGrader,
+    "exec_limit": 2500,
+    "can_indent": true,
+    "x_indent": 50,
+    "lang": "en",
+    "show_feedback": true,
+    "trashId": "fibonacci-sortableTrash"
+  });
+  parsonsPuzzle.init(initial);
+  parsonsPuzzle.shuffleLines();
+  $("#fibonacci-newInstanceLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.shuffleLines(); 
+  }); 
+  $("#fibonacci-feedbackLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.getFeedback(); 
+  }); 
+})(); 
+</script>
+
+## Recursive fibonacci sequence calculation with memoization
 Re-arrange the blocks below so they memoize the calculation of the n:th Fibonacci number!
 
 <div id="memoFibonacci-sortableTrash" class="sortable-code"></div> 
