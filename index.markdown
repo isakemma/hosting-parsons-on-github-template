@@ -7,6 +7,50 @@ title: Multiple Parson's Problems on One Page
 ---
 # Parsons Practice
 
+<div id="memoFibonacci-sortableTrash" class="sortable-code"></div> 
+<div id="memoFibonacci-sortable" class="sortable-code"></div> 
+<div style="clear:both;"></div> 
+<p> 
+    <input id="memoFibonacci-feedbackLink" value="Get Feedback" type="button" /> 
+    <input id="memoFibonacci-newInstanceLink" value="Reset Problem" type="button" /> 
+</p> 
+<script type="text/javascript"> 
+(function(){
+  var initial = "memo = [None]*(n+1)\n" +
+    "def fib(n):\n" +
+    "	if memo[n] is not None:\n" +
+    "    	return memo[n]\n" +
+    "    if n == 1 or n == 2:\n" +
+    "    	memo[n] = 1\n" +
+    "    else:\n" +
+    "        memo[n] = fib(n-1) + fib(n-2)\n" +
+    "    return memo[n]\n" +
+    "return 1 #distractor\n" +
+    "memo[n] += 1 #distractor";
+  var parsonsPuzzle = new ParsonsWidget({
+    "sortableId": "memoFibonacci-sortable",
+    "max_wrong_lines": 10,
+    "grader": ParsonsWidget._graders.LineBasedGrader,
+    "exec_limit": 2500,
+    "can_indent": true,
+    "x_indent": 50,
+    "lang": "en",
+    "show_feedback": true,
+    "trashId": "memoFibonacci-sortableTrash"
+  });
+  parsonsPuzzle.init(initial);
+  parsonsPuzzle.shuffleLines();
+  $("#memoFibonacci-newInstanceLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.shuffleLines(); 
+  }); 
+  $("#memoFibonacci-feedbackLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.getFeedback(); 
+  }); 
+})(); 
+</script>
+
 ## Parsons 1 (Line Based Grader)
 Re-arrange the blocks below so they print out "Hello World!"
 
